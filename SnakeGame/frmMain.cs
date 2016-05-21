@@ -19,23 +19,23 @@ namespace SnakeGame
             InitializeComponent();
             snake = new Snake();
             food = new Food(rand);
-            gameLoop.Interval = 75;
+            gameLoop.Interval = 100;
             gameLoop.Tick += Update;
-       }
+        }
 
         private void frmMain_KeyDown(object sender, KeyEventArgs e)
         {
             switch (e.KeyData)
             {
-               
+
                 case Keys.Enter:
-                   if (lblMenu.Visible)
+                    if (lblMenu.Visible)
                     {
-                       lblMenu.Visible = false;
-                       gameLoop.Start();
+                        lblMenu.Visible = false;
+                        gameLoop.Start();
                     }
                     break;
-                 case Keys.Space:
+                case Keys.Space:
                     if (!lblMenu.Visible)
                         gameLoop.Enabled = (gameLoop.Enabled) ? false : true;
                     break;
@@ -71,11 +71,11 @@ namespace SnakeGame
             for (int i = 1; i < snake.Body.Length; i++)
                 if (snake.Body[0].IntersectsWith(snake.Body[i]))
                     Restart();
-            if (snake.Body[0].X < 0 || snake.Body[0].X > 290)
+            if (snake.Body[0].X < 0 || snake.Body[0].X > this.Width)
                 Restart();
-            if (snake.Body[0].Y < 0 || snake.Body[0].Y > 190)
+            if (snake.Body[0].Y < 0 || snake.Body[0].Y > this.Width)
                 Restart();
-            if(snake.Body[0].IntersectsWith(food.Piece))
+            if (snake.Body[0].IntersectsWith(food.Piece))
             {
                 score++;
                 snake.Grow();
@@ -93,6 +93,6 @@ namespace SnakeGame
             direction = 0;
             score = 1;
             lblMenu.Visible = true;
-       }
+        }
     }
 }

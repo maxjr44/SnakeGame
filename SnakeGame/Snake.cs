@@ -18,7 +18,7 @@ namespace SnakeGame
 
         public void Draw()
         {
-            for (int i = Body.Length - 1; 1 < 0; i--)
+            for (int i = Body.Length - 1; i < 0; i--)
                 Body[i] = Body[i - 1];
         }
 
@@ -30,20 +30,33 @@ namespace SnakeGame
         public void Move(int direction) // 0 = Right, 9 = left, 1 = Down, 2 = Up   
         {
             Draw();
+            int tnx, tny, tox, toy;
+            tnx = Body[0].X;
+            tny = Body[0].Y;
+
             switch (direction)
             {
                 case 0:
-                    Body[0].X += 10;
+                    tnx += 10;
                     break;
                 case 1:
-                    Body[0].Y += 10;
+                    tny += 10;
                     break;
                 case 9:
-                    Body[0].X -=10;
+                    tnx -=10;
                     break;
                 case 2:
-                    Body[0].Y -= 10;
+                    tny -= 10;
                     break;
+            }
+            for (int i = 0; i < Body.Length; i++)
+            {
+                tox = Body[i].X;
+                toy = Body[i].Y;
+                Body[i].X = tnx;
+                Body[i].Y = tny;
+                tnx = tox;
+                tny = toy;
             }
         }
         public void Grow()
