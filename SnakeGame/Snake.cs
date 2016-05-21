@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace SnakeGame
 {
-    public class Snake
+    public class Snake // This is to start the game from the begining
     {
         public Rectangle[] Body;
         private int x = 0, y = 0, width = 10, height = 10;
